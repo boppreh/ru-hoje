@@ -3,6 +3,9 @@ curl --compressed http://ru.ufsc.br/ru/ 2>/dev/null |
 
   # Take table row corresponding to day of week (Mon=2,Tue=3,Sun=8).
   awk "/<tr>/{i++}i==$(date +%u)+1" | 
+
+  # Get only meat and side dish.
+  awk "/<td/{i++}i==4||i==5" | 
   
   # Remove HTML tags.
   sed 's/<\/*[^>]*>//g' |
